@@ -1,0 +1,10 @@
+.nav ul {
+  margin-top: 20px;
+}
+.nav li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.nav a {
+  color: #61dafb;
+}

@@ -1,0 +1,10 @@
+.sitemap ul {
+  display: flex;
+  justify-content: center;
+}
+.sitemap li {
+  padding: 10px;
+}
+.sitemap a {
+  color: '#61dafb';
+}

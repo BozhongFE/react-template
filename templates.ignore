@@ -1,0 +1,90 @@
+{{#unless less}}
+[
+  {
+    "path": "/webpack.config.js",
+    "type": "write"
+  },
+  {
+    "path": "/package.json",
+    "type": "write"
+  }
+],
+{{/unless}}
+
+{{#unless router}}
+[
+  {
+    "path": "/src/routes",
+    "type": "delete"
+  },
+  {
+    "path": "/src/components/nav.tsx",
+    "type": "delete"
+  },
+  {
+    "path": "/src/assets/css/nav.css",
+    "type": "delete"
+  },
+  {
+    "path": "/src/page/home/index.tsx",
+    "type": "delete"
+  },
+  {
+    "path": "/src/assets/css/home.css",
+    "type": "delete"
+  },
+  {
+    "path": "/src/page/404.tsx",
+    "type": "delete"
+  },
+  {
+    "path": "/src/page/sitemap.tsx",
+    "type": "delete"
+  },
+  {
+    "path": "/src/assets/css/sitemap.css",
+    "type": "delete"
+  },
+  {
+    "path": "/src/App.tsx",
+    "type": "write"
+  },
+  {
+    "path": "/package.json",
+    "type": "write"
+  }
+],
+{{/unless}}
+
+{{#unless redux}}
+[
+  {
+    "path": "/src/store",
+    "type": "delete"
+  },
+  {
+    "path": "/src/App.tsx",
+    "type": "write"
+  },
+  {
+    "path": "/package.json",
+    "type": "write"
+  }
+],
+{{/unless}}
+
+{{#unless source}}
+[
+  {
+    "path": "/bz.config.js",
+    "type": "write"
+  }
+],
+{{/unless}}
+
+[
+  {
+    "path": "/templates.ignore",
+    "type": "delete"
+  }
+]

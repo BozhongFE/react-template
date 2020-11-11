@@ -1,0 +1,10 @@
+.home {
+  text-align: center;
+}
+.home__count {
+  margin-top: 20px;
+}
+.home__count--btn {
+  margin-left: 20px;
+  cursor: pointer;
+}
