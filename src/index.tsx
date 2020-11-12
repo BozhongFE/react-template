@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store';
 {{/if}}
-import App from './App';
+import App from './app';
 import * as serviceWorker from './serviceWorker';
 import './assets/css/reset.css';
 

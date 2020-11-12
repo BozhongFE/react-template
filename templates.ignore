@@ -46,7 +46,7 @@
     "type": "delete"
   },
   {
-    "path": "/src/App.tsx",
+    "path": "/src/app.tsx",
     "type": "write"
   },
   {
@@ -63,7 +63,11 @@
     "type": "delete"
   },
   {
-    "path": "/src/App.tsx",
+    "path": "/src/app.tsx",
+    "type": "write"
+  },
+  {
+    "path": "/src/index.tsx",
     "type": "write"
   },
   {
