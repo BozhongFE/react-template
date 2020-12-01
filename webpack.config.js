@@ -67,19 +67,7 @@ module.exports = {
       {{#if less}}
       {
         test: /\.less$/,
-        use: [
-          {
-            loader: 'style-loader',
-          },
-          { loader: 'css-loader', options: { sourceMap: false } },
-          {
-            loader: 'less-loader',
-            options: {
-              strictMath: true,
-              noIeCompat: true,
-            },
-          },
-        ],
+        use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {{/if}}
     ],
