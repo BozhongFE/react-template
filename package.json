@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "address": "^1.0.3",
+    "autoprefixer": "^10.1.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-component": "^1.1.1",
@@ -55,6 +56,8 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     {{/if}}
+    "postcss": "^8.2.1",
+    "postcss-loader": "^4.1.0",
     "redux-devtools-extension": "^2.13.8",
     "shelljs": "^0.8.4",
     "style-loader": "^1.2.1",
