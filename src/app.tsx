@@ -1,6 +1,11 @@
 import React, { Suspense } from 'react';
 {{#if router}}
+
+{{#if routerHistoryMode}}
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+{{else}}
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+{{/if}}
 
 import routes from './routes';
 {{/if}}
@@ -13,7 +18,11 @@ function App() {
       <img src={logo} className="App-logo" alt="logo" />
       <p>Welcome to Your React.js App</p>
       {{#if router}}
+      {{#if routerHistoryMode}}
+      <Router basename={window.pathName}>
+      {{else}}
       <Router>
+      {{/if}}
         <Switch>
           {routes.map((route, i) => (
             <Route

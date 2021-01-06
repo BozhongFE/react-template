@@ -5,7 +5,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const address = require('address');
-const { projectPath, outputPath, CopyShareImg } = require('./bz.config');
+const { projectPath, outputPath, CopyShareImg, publicPath } = require('./bz.config');
 
 /**
  * 获取 ip
@@ -104,6 +104,7 @@ if (process.env.NODE_ENV !== 'production') {
       nodeEnv: process.env.NODE_ENV,
       inject: false,
       projectPath,
+      pagePath: publicPath,
     }),
   ]);
 } else {
@@ -128,6 +129,7 @@ if (process.env.NODE_ENV !== 'production') {
       nodeEnv: process.env.NODE_ENV,
       inject: false,
       projectPath,
+      pagePath: publicPath,
       bzConfigPath: 'https://source.bozhong.com/common/js/config.js',
     }),
     new CopyShareImg(),
