@@ -6,6 +6,6 @@ interface HMT {
 }
 
 interface Window {
-  pathName: string;
+  routerBaseUrl: string;
   _hmt: HMT;
 }

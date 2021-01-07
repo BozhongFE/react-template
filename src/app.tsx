@@ -19,7 +19,7 @@ function App() {
       <p>Welcome to Your React.js App</p>
       {{#if router}}
       {{#if routerHistoryMode}}
-      <Router basename={window.pathName}>
+      <Router basename={window.routerBaseUrl}>
       {{else}}
       <Router>
       {{/if}}
