@@ -47,7 +47,7 @@
       var sourceDomain = location.protocol + '//source.' + domain; // bottom loadScript used
       var projectFullPath = sourceDomain + '<%=htmlWebpackPlugin.options.projectPath%>'; // main.js used
       var localDev = location.pathname.match(/^\/[a-zA-Z]+[0-9]{2,5}/);
-      if (env === 'dev') {
+      if (domain === 'office.bzdev.net' && localDev) {
         sourceDomain = location.origin + localDev[0] + '/';
         projectFullPath = location.origin + location.pathname;
       }
