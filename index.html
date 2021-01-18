@@ -33,7 +33,6 @@
       }(window));
     </script>
     -->
-    <script src="<%=htmlWebpackPlugin.options.bzConfigPath%>"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -41,9 +40,11 @@
     <% const env = htmlWebpackPlugin.options.nodeEnv === 'development' || (htmlWebpackPlugin.options.inject && htmlWebpackPlugin.options.chunks.length) ? 'dev' : 'product'; %>
     <script>
       var env = '<%=env%>';
+      var pocoDevDomainReg = /pocoimg\\.cn/;
+      var pocoProductDomainReg = /poco\\.cn/;
       var domain = location.host.split('.').slice(1).join('.');
-      if (/pocoimg.cn/.test(domain)) domain = 'office.bzdev.net';
-      if (/poco.cn/.test(domain)) domain = 'bozhong.com';
+      if (pocoDevDomainReg.test(domain)) domain = 'office.bzdev.net';
+      if (pocoProductDomainReg.test(domain)) domain = 'bozhong.com';
       var sourceDomain = location.protocol + '//source.' + domain; // bottom loadScript used
       var projectFullPath = sourceDomain + '<%=htmlWebpackPlugin.options.projectPath%>'; // main.js used
       var localDev = location.pathname.match(/^\/[a-zA-Z]+[0-9]{2,5}/);
@@ -52,6 +53,9 @@
         projectFullPath = location.origin + location.pathname;
       }
     </script>
+    <% if (!pocoDevDomainReg.test(domain) && !pocoProductDomainReg.test(domain)) { %>
+    <script src="<%=htmlWebpackPlugin.options.bzConfigPath%>"></script>
+    <% } %>
     <script>
       // 异步加载脚本，全部加载后完成回调
       function loadScript (files, queueIndex, callback) {
@@ -69,6 +73,8 @@
       }
     </script>
     <% if (env === 'dev') { %>
+    <script src="//source.bozhong.com/common/js/vconsole.min.js"></script>
+    <script>new VConsole()</script>
     <script type="text/javascript">
       var devHostName = location.pathname.split('/')[1];
       var routerBaseUrl = devHostName;

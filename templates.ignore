@@ -18,6 +18,10 @@
     "type": "delete"
   },
   {
+    "path": "/src/utils/use-router.ts",
+    "type": "delete"
+  },
+  {
     "path": "/src/components/nav.tsx",
     "type": "delete"
   },
