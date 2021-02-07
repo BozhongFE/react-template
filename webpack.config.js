@@ -130,21 +130,15 @@ if (process.env.NODE_ENV !== 'production') {
   module.exports.optimization = {
     minimizer: [
       new UglifyJsPlugin({
-        // 允许并发
         parallel: true,
-        // 开启缓存
         cache: true,
+        sourceMap: true,
         uglifyOptions: {
           compress: {
-            // 删除所有的console语句
-            drop_console: true,
-            // 把使用多次的静态值自动定义为变量
             reduce_vars: true,
           },
           output: {
-            // 不保留注释
             comments: false,
-            // 使输出的代码尽可能紧凑
             beautify: false,
           },
         },
