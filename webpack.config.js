@@ -5,6 +5,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const address = require('address');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { projectPath, outputPath, CopyShareImg, publicPath } = require('./bz.config');
 
 /**
@@ -126,9 +128,31 @@ if (process.env.NODE_ENV !== 'production') {
   module.exports.mode = 'production';
   module.exports.devtool = false;
   module.exports.optimization = {
-    minimize: false,
+    minimizer: [
+      new UglifyJsPlugin({
+        // 允许并发
+        parallel: true,
+        // 开启缓存
+        cache: true,
+        uglifyOptions: {
+          compress: {
+            // 删除所有的console语句
+            drop_console: true,
+            // 把使用多次的静态值自动定义为变量
+            reduce_vars: true,
+          },
+          output: {
+            // 不保留注释
+            comments: false,
+            // 使输出的代码尽可能紧凑
+            beautify: false,
+          },
+        },
+      }),
+    ],
   };
   module.exports.plugins = (module.exports.plugins || []).concat([
+    new CleanWebpackPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"',
