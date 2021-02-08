@@ -7,7 +7,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const address = require('address');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { projectPath, outputPath, CopyShareImg, publicPath } = require('./bz.config');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+
+const {
+  projectPath,
+  outputPath,
+  CopyShareImg,
+  publicPath,
+} = require('./bz.config');
 
 /**
  * 获取 ip
@@ -47,6 +54,7 @@ module.exports = {
             presets: ['@babel/preset-env'],
             plugins: [
               '@babel/plugin-transform-runtime',
+              '@babel/plugin-proposal-class-properties',
               '@babel/plugin-proposal-nullish-coalescing-operator',
               '@babel/plugin-proposal-optional-chaining',
             ],
@@ -68,8 +76,62 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        oneOf: [
+          {
+            resourceQuery: /css_modules/,
+            use: [
+              'style-loader',
+              {
+                loader: 'typings-for-css-modules-loader',
+                options: {
+                  modules: true,
+                  namedExport: true,
+                  camelCase: true,
+                  minimize: true,
+                  localIdentName: '[local]_[hash:base64:5]',
+                },
+              },
+              'postcss-loader',
+            ],
+          },
+          {
+            use: ['style-loader', 'css-loader', 'postcss-loader'],
+          },
+        ],
       },
+      {{#if less}}
+      {
+        test: /\.less$/,
+        oneOf: [
+          {
+            resourceQuery: /css_modules/,
+            use: [
+              'style-loader',
+              {
+                loader: 'typings-for-css-modules-loader',
+                options: {
+                  modules: true,
+                  namedExport: true,
+                  camelCase: true,
+                  minimize: true,
+                  localIdentName: '[local]_[hash:base64:5]',
+                },
+              },
+              'postcss-loader',
+              'less-loader',
+            ],
+          },
+          {
+            use: [
+              'style-loader',
+              'css-loader',
+              'postcss-loader',
+              'less-loader',
+            ],
+          },
+        ],
+      },
+      {{/if}}
       {
         test: /\.(woff|woff2|jpg|png)$/,
         use: {
@@ -81,12 +143,6 @@ module.exports = {
           },
         },
       },
-      {{#if less}}
-      {
-        test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
-      },
-      {{/if}}
     ],
   },
   performance: {
@@ -166,5 +222,6 @@ if (process.env.NODE_ENV !== 'production') {
       bzConfigPath: 'https://source.bozhong.com/common/js/config.js',
     }),
     new CopyShareImg(),
+    new HardSourceWebpackPlugin(),
   ]);
 }

@@ -12,6 +12,7 @@ import React from 'react';
 {{/if}}
 
 import Nav from 'src/components/nav';
+import moduleStyle from 'src/assets/css/module.css';
 import 'src/assets/css/home.css'
 
 function Index() {
@@ -42,6 +43,7 @@ function Index() {
 
   return (
     <div className='home'>
+      <p className={moduleStyle.module}>Home Page</p>
       <Nav />
       {{#if redux}}
       <div className='home__count'>
