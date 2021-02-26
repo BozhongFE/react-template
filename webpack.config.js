@@ -138,8 +138,8 @@ module.exports = {
         use: {
           loader: 'url-loader',
           options: {
-            name: 'imanges/[hash].[ext]',
-            limit: 5000,
+            name: 'images/[hash].[ext]',
+            limit: 12 * 1024,
             mimetype: 'application/font-woff',
           },
         },
