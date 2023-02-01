@@ -1,3 +1,0 @@
-export const GET_HOME_DATA = 'GET_HOME_DATA';
-
-export const SET_IS_GETTING_HOME_DATA = 'SET_IS_GETTING_HOME_DATA';
