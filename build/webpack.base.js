@@ -1,7 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'none',
   entry: {
     main: './src/index.js'
   },
@@ -12,13 +12,4 @@ module.exports = {
       inject: 'body',
     }),
   ],
-  devServer: {
-    allowedHosts: 'all',
-    client: {
-      // wss + domain
-      // webSocketURL: 'wss://domain/pathname/ws',
-      // ws + (domina or ip)
-      // webSocketURL: `ws://${'0.0.0.0'}:8080/ws`,
-    },
-  },
 };
