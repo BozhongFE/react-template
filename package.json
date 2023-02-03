@@ -4,8 +4,8 @@
   "description": "webpack5 + react18",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --config ./build/webpack.dev.js",
-    "build": "webpack build --config ./build/webpack.build.js",
+    "dev": "cross-env NODE_ENV=development webpack serve --config ./build/webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack build --config ./build/webpack.config.js",
     "build:dll": "webpack build --config ./build/webpack.dll.js"
   },
   "repository": {
@@ -20,6 +20,7 @@
     "react-dom": "18"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "html-webpack-plugin": "^5.5.0",
     "html-webpack-tags-plugin": "^3.0.2",
     "webpack": "5",

@@ -1,39 +1,38 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const entry = {
-  vendor: ['react', 'react-dom'],
-};
+const config = require('./build.config');
+
 module.exports = [
   {
     name: 'dll:dev',
     mode: 'development',
-    entry,
+    entry: config.dll.entry,
     output: {
-      path: path.resolve(__dirname, '../.cache/dll/dev'),
+      path: path.resolve(__dirname, '..', config.dll.cache.dev),
       filename: '[name].dll.js',
       library: '[name]_[fullhash]'
     },
     plugins: [
       new webpack.DllPlugin({
         name: '[name]_[fullhash]',
-        path: path.resolve(__dirname, '../.cache/dll/dev/[name]-manifest.json')
+        path: path.resolve(__dirname, '..', config.dll.cache.dev, '[name]-manifest.json'),
       })
     ],
   },
   {
     name: 'dll:prod',
     mode: 'production',
-    entry,
+    entry: config.dll.entry,
     output: {
-      path: path.resolve(__dirname, '../.cache/dll/prod'),
+      path: path.resolve(__dirname, '..', config.dll.cache.prod),
       filename: '[name].dll.js',
       library: '[name]_[fullhash]'
     },
     plugins: [
       new webpack.DllPlugin({
         name: '[name]_[fullhash]',
-        path: path.resolve(__dirname, '../.cache/dll/prod/[name]-manifest.json')
+        path: path.resolve(__dirname, '..', config.dll.cache.prod, '[name]-manifest.json'),
       })
     ],
   },

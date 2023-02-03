@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   copy-webpack-plugin: ^11.0.0
+  cross-env: ^7.0.3
   html-webpack-plugin: ^5.5.0
   html-webpack-tags-plugin: ^3.0.2
   react: '18'
@@ -16,6 +17,7 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
 
 devDependencies:
+  cross-env: 7.0.3
   html-webpack-plugin: 5.5.0_webpack@5.75.0
   html-webpack-tags-plugin: 3.0.2_vjsxgketla6kqcty7l6z2i2ilm
   webpack: 5.75.0_webpack-cli@5.0.1
@@ -595,6 +597,14 @@ packages:
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha1-pgQtNjTCsn6TKPg3uWX6yDgI24U=}
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+    dev: true
 
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
