@@ -4,8 +4,9 @@
   "description": "webpack5 + react18",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack serve --config ./build/webpack.dev.js",
     "build": "webpack build --config ./build/webpack.build.js",
-    "dev": "webpack serve --config ./build/webpack.dev.js"
+    "build:dll": "webpack build --config ./build/webpack.dll.js"
   },
   "repository": {
     "type": "git",
@@ -14,11 +15,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "html-webpack-plugin": "^5.5.0",
+    "copy-webpack-plugin": "^11.0.0",
     "react": "18",
     "react-dom": "18"
   },
   "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "html-webpack-tags-plugin": "^3.0.2",
     "webpack": "5",
     "webpack-cli": "5",
     "webpack-dev-server": "4"

@@ -1,9 +1,17 @@
+const path = require('path');
+const webpack = require('webpack');
+
 const config = require('./webpack.base.js');
 
-module.exports = Object.assign(config, {
+const conf = Object.assign(config, {
   mode: 'development',
   devServer: {
     allowedHosts: 'all',
+    static: [
+      {
+        directory: path.resolve(__dirname, '../.cache/dll/dev'),
+      }
+    ],
     client: {
       // wss + domain
       // webSocketURL: 'wss://domain/pathname/ws',
@@ -11,4 +19,13 @@ module.exports = Object.assign(config, {
       // webSocketURL: `ws://${'0.0.0.0'}:8080/ws`,
     },
   },
+  plugins: [
+    ...config.plugins,
+    // dll manifest
+    new webpack.DllReferencePlugin({
+      manifest: require('../.cache/dll/dev/vendor-manifest.json'),
+    }),
+  ],
 });
+
+module.exports = conf;
