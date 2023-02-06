@@ -1,12 +1,16 @@
 module.exports = {
   dll: {
-    entry: {
-      vendor: ['react', 'react-dom'],
+    dev: {
+      cache: '.cache/dll/dev',
+      entry: {
+        vendor: ['react', 'react-dom/client'],
+      },
     },
-    cache: {
-      base: '.cache/dll',
-      dev: '.cache/dll/dev',
-      prod: '.cache/dll/prod',
-    }
+    prod: {
+      cache: '.cache/dll/prod',
+      entry: {
+        vendor: ['react', 'react-dom/client'],
+      },
+    },
   },
 };
