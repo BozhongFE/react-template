@@ -22,11 +22,12 @@ const webpackConfig = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css?$/,
+        test: /\.(css|less)?$/,
         use: [
           'style-loader',
           'css-loader',
           'postcss-loader',
+          'less-loader',
         ],
         exclude: /node_modules/,
       },

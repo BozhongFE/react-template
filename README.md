@@ -12,6 +12,7 @@ pnpm i cross-env -D
 pnpm i typescript ts-loader -D
 pnpm i @types/react @types/react-dom -D
 pnpm i css-loader style-loader postcss-loader postcss autoprefixer -D
+pnpm i less less-loader -D
 ```
 
 + html-webpack-plugin
