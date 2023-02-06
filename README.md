@@ -11,6 +11,7 @@ pnpm i html-webpack-plugin html-webpack-tags-plugin copy-webpack-plugin -D
 pnpm i cross-env -D
 pnpm i typescript ts-loader -D
 pnpm i @types/react @types/react-dom -D
+pnpm i css-loader style-loader postcss-loader postcss autoprefixer -D
 ```
 
 + html-webpack-plugin
@@ -19,3 +20,10 @@ pnpm i @types/react @types/react-dom -D
   + assets（css、js、img...）
 + copy-webpack-plugin
   + copy files(prod dll)
+
++ style-loader
+  + cssjs to style
++ css-loader
+  + css to css-js
++ postcss-loader
+  + css to css-tree(AST)
