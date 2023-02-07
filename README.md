@@ -13,6 +13,7 @@ pnpm i typescript ts-loader -D
 pnpm i @types/react @types/react-dom -D
 pnpm i css-loader style-loader postcss-loader postcss autoprefixer -D
 pnpm i less less-loader -D
+pnpm i typings-for-css-modules-loader -D
 ```
 
 + html-webpack-plugin
@@ -23,8 +24,10 @@ pnpm i less less-loader -D
   + copy files(prod dll)
 
 + style-loader
-  + cssjs to style
+  + css-js to style
 + css-loader
   + css to css-js
 + postcss-loader
   + css to css-tree(AST)
++ @teamsupercell/typings-for-css-modules-loader (extend of css-loader)
+  + css to (css-js and *.d.ts)
