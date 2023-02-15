@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './test2.module.less';
+import style from './test2.less';
 
 export default () => {
   return (

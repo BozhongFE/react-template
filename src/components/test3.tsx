@@ -1,10 +1,10 @@
 import React from 'react';
 
-import style from './test3.less';
+import './test3.less';
 
 export default () => {
   return (
-    <div className={style.test}>
+    <div className='test'>
       test3
     </div>
   );

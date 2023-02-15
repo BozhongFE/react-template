@@ -2,6 +2,23 @@
 
 webpack5 + react18
 
+## feature
+
+- [x] webpack5
+- [x] react18
+- [x] babel
+- [x] dll
+- [x] common config
+- [x] typescript
+- [x] less
+- [x] css modules
+- [x] dev server
+- [x] build to dist
+- [ ] build to source
+- [ ] router
+- [ ] router history mode
+
+
 ## 依赖迭代
 
 ```bash
@@ -14,6 +31,7 @@ pnpm i @types/react @types/react-dom -D
 pnpm i css-loader style-loader postcss-loader postcss autoprefixer -D
 pnpm i less less-loader -D
 pnpm i typings-for-css-modules-loader -D
+pnpm i babel-loader @babel/core @babel/plugin-transform-typescript -D
 ```
 
 + html-webpack-plugin
@@ -31,3 +49,5 @@ pnpm i typings-for-css-modules-loader -D
   + css to css-tree(AST)
 + @teamsupercell/typings-for-css-modules-loader (extend of css-loader)
   + css to (css-js and *.d.ts)
+
+

@@ -18,24 +18,50 @@ const webpackConfig = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-typescript', '@babel/preset-react'],
+            plugins: [
+              // '@babel/plugin-transform-runtime',
+              // '@babel/plugin-proposal-class-properties',
+              // '@babel/plugin-proposal-nullish-coalescing-operator',
+              // '@babel/plugin-proposal-optional-chaining',
+              '@babel/plugin-transform-runtime',
+              './build/webpack.plugin.css.modules.js',
+            ],
+          }
+        },
         exclude: /node_modules/,
       },
       {
         test: /\.(css|less)?$/,
-        use: [
-          'style-loader',
-          '@teamsupercell/typings-for-css-modules-loader',
+        oneOf: [
           {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-            },
+            resourceQuery: /css_modules/,
+            use: [
+              'style-loader',
+              '@teamsupercell/typings-for-css-modules-loader',
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true
+                },
+              },
+              'postcss-loader',
+              'less-loader',
+            ],
           },
-          'postcss-loader',
-          'less-loader',
+          {
+            use: [
+              'style-loader',
+              '@teamsupercell/typings-for-css-modules-loader',
+              'css-loader',
+              'postcss-loader',
+              'less-loader',
+            ],
+          }
         ],
-        exclude: /node_modules/,
       },
     ],
   },
@@ -132,3 +158,21 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 module.exports = webpackConfig;
+
+// function cssModulesPlugin() {
+//   const CSS_FILE_EXTENSIONS = ['.css', '.scss', '.sass', '.less'];
+//   return {
+//     visitor: {
+//       ImportDeclaration(path) {
+//         const { specifiers, source } = path.node;
+//         const { value } = source;
+//         if (
+//           specifiers.length > 0
+//           && CSS_FILE_EXTENSIONS.includes(path.extname(value))
+//         ) {
+//           source.value = `${value}?css_modules`;
+//         }
+//       },
+//     },
+//   };
+// };
